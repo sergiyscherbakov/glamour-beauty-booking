@@ -2,6 +2,18 @@
 
 ![PHP](https://img.shields.io/badge/PHP-8.2.12-777BB4?style=for-the-badge&logo=php&logoColor=white) ![Yii2](https://img.shields.io/badge/Yii2-2.0.49-0073AA?style=for-the-badge&logo=yii&logoColor=white) ![Vue.js](https://img.shields.io/badge/Vue.js-3.0-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white) ![Composer](https://img.shields.io/badge/Composer-2.0-885630?style=for-the-badge&logo=composer&logoColor=white) ![Axios](https://img.shields.io/badge/Axios-1.6-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
 
+## Автор
+
+**Розробник:** Сергій Щербаков
+**Email:** sergiyscherbakov@ukr.net
+**Telegram:** @s_help_2010
+
+### 💰 Підтримати розробку
+Задонатити на каву USDT (BINANCE SMART CHAIN):
+**`0xDFD0A23d2FEd7c1ab8A0F9A4a1F8386832B6f95A`**
+
+---
+
 **Glamour Beauty Booking Service** – веб-додаток для онлайн-бронювання послуг салону краси, що дозволяє клієнтам обирати послуги з 10 категорій (волосся, нігті, брови та вії, макіяж, косметологія, депіляція, масаж, SPA, солярій, татуаж), переглядати доступні часові слоти в реальному часі та створювати бронювання через інтуїтивний інтерфейс, а також надає адміністраторам панель управління для перегляду всіх замовлень з фільтрацією та пошуком.
 
 **Стек технологій:** Backend – Yii2 Framework (PHP 8.2.12) з REST API архітектурою, Frontend – Vue.js 3.0 з Axios для HTTP-запитів, Database – MySQL 8.0, Package Manager – Composer 2.0, Server – PHP Built-in Development Server, Images – Unsplash API для зображень послуг.
@@ -484,13 +496,3 @@ php yii cache/flush-all
 ---
 
 **Детальна документація:** [SETUP.md](SETUP.md)
-
-## Автор
-
-**Розробник:** Сергій Щербаков
-**Email:** sergiyscherbakov@ukr.net
-**Telegram:** @s_help_2010
-
-### 💰 Підтримати розробку
-Задонатити на каву USDT (BINANCE SMART CHAIN):
-**`0xDFD0A23d2FEd7c1ab8A0F9A4a1F8386832B6f95A`**
