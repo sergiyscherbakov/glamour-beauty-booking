@@ -1,0 +1,29 @@
+# Yii2 Framework
+/vendor/
+/runtime/
+/web/assets/
+/web/index-test.php
+
+# Composer
+composer.lock
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database config (optional)
+# /config/db.php
+
+# Environment files
+.env
+.env.local

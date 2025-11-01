@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glamour Beauty - Агрегатор послуг краси</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><circle cx="200" cy="200" r="150" fill="rgba(255,255,255,0.1)"/><circle cx="800" cy="500" r="200" fill="rgba(255,255,255,0.05)"/><circle cx="1000" cy="200" r="100" fill="rgba(255,255,255,0.08)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 28px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 60px;
+            background: white;
+            color: #764ba2;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            background: #f093fb;
+            color: white;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #fff 0%, #f8f9ff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            color: #764ba2;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 100px 20px;
+            background: white;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            position: relative;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(118, 75, 162, 0.9), transparent);
+            padding: 30px;
+            color: white;
+        }
+
+        .category-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .category-card a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Popular Services Section */
+        .popular-services {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #fff 0%, #f8f9ff 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .service-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 20px;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .service-content p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .service-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .service-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .service-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 56px;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d2d2d;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>✨ Glamour Beauty ✨</h1>
+            <p>Агрегатор послуг краси №1 в Україні</p>
+            <a href="/booking.html" class="cta-button">Обрати послугу</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Чому обирають нас</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>100+ послуг</h3>
+                    <p>Найбільший вибір beauty-послуг від перевірених салонів та майстрів</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Топові майстри</h3>
+                    <p>Працюємо тільки з сертифікованими професіоналами</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Зручне бронювання</h3>
+                    <p>Швидке онлайн-бронювання за лічені хвилини</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Вигідні ціни</h3>
+                    <p>Порівнюйте ціни від різних провайдерів</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <h3>Акції та знижки</h3>
+                    <p>Регулярні спеціальні пропозиції для клієнтів</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>Безпечна оплата</h3>
+                    <p>Захищені платежі та гарантія повернення коштів</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Популярні категорії</h2>
+            <div class="categories-grid">
+                <a href="/booking.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035" alt="Волосся">
+                    <div class="category-overlay">
+                        <h3>💇 Волосся</h3>
+                        <p>Стрижки, фарбування, укладання</p>
+                    </div>
+                </a>
+                <a href="/booking.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371" alt="Нігті">
+                    <div class="category-overlay">
+                        <h3>💅 Нігті</h3>
+                        <p>Манікюр, педикюр, дизайн</p>
+                    </div>
+                </a>
+                <a href="/booking.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2" alt="Брови та вії">
+                    <div class="category-overlay">
+                        <h3>👁️ Брови та вії</h3>
+                        <p>Корекція, фарбування, нарощування</p>
+                    </div>
+                </a>
+                <a href="/booking.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702" alt="Макіяж">
+                    <div class="category-overlay">
+                        <h3>💄 Макіяж</h3>
+                        <p>Денний, вечірній, весільний</p>
+                    </div>
+                </a>
+                <a href="/booking.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e" alt="Косметологія">
+                    <div class="category-overlay">
+                        <h3>🧴 Косметологія</h3>
+                        <p>Чистки, пілінги, омолодження</p>
+                    </div>
+                </a>
+                <a href="/booking.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874" alt="Масаж">
+                    <div class="category-overlay">
+                        <h3>💆 Масаж</h3>
+                        <p>Релакс, антицелюлітний, SPA</p>
+                    </div>
+                </a>
+                <a href="/booking.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef" alt="SPA">
+                    <div class="category-overlay">
+                        <h3>🛁 SPA</h3>
+                        <p>Обгортання, скраби, релакс</p>
+                    </div>
+                </a>
+                <a href="/booking.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702" alt="Депіляція">
+                    <div class="category-overlay">
+                        <h3>✨ Депіляція</h3>
+                        <p>Шугарінг, ваксинг, лазер</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Services Section -->
+    <section class="popular-services">
+        <div class="container">
+            <h2 class="section-title">Популярні послуги</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df" alt="Стрижка">
+                    <div class="service-content">
+                        <h3>💇 Стрижка волосся</h3>
+                        <p>Професійна стрижка від топових майстрів</p>
+                        <div class="service-price">від 350 грн</div>
+                        <a href="/booking.html" class="service-btn">Забронювати</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc" alt="Манікюр">
+                    <div class="service-content">
+                        <h3>💅 Манікюр</h3>
+                        <p>Гелевий, класичний, апаратний</p>
+                        <div class="service-price">від 250 грн</div>
+                        <a href="/booking.html" class="service-btn">Забронювати</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8" alt="Фарбування">
+                    <div class="service-content">
+                        <h3>🎨 Фарбування волосся</h3>
+                        <p>Балаяж, омбре, однотонне</p>
+                        <div class="service-price">від 800 грн</div>
+                        <a href="/booking.html" class="service-btn">Забронювати</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937" alt="Корекція брів">
+                    <div class="service-content">
+                        <h3>👁️ Корекція брів</h3>
+                        <p>Моделювання та фарбування</p>
+                        <div class="service-price">від 150 грн</div>
+                        <a href="/booking.html" class="service-btn">Забронювати</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2" alt="Макіяж">
+                    <div class="service-content">
+                        <h3>💄 Вечірній макіяж</h3>
+                        <p>Професійний макіяж для особливих подій</p>
+                        <div class="service-price">від 600 грн</div>
+                        <a href="/booking.html" class="service-btn">Забронювати</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881" alt="Педикюр">
+                    <div class="service-content">
+                        <h3>🦶 Педикюр</h3>
+                        <p>Класичний та апаратний педикюр</p>
+                        <div class="service-price">від 300 грн</div>
+                        <a href="/booking.html" class="service-btn">Забронювати</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948" alt="Масаж обличчя">
+                    <div class="service-content">
+                        <h3>💆 Масаж обличчя</h3>
+                        <p>Релаксуючий та омолоджуючий</p>
+                        <div class="service-price">від 400 грн</div>
+                        <a href="/booking.html" class="service-btn">Забронювати</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1596178060810-4df5ea0b73b2" alt="Нарощування вій">
+                    <div class="service-content">
+                        <h3>👁️ Нарощування вій</h3>
+                        <p>2D, 3D ефекти, класичне</p>
+                        <div class="service-price">від 500 грн</div>
+                        <a href="/booking.html" class="service-btn">Забронювати</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15" alt="Чистка обличчя">
+                    <div class="service-content">
+                        <h3>🧴 Чистка обличчя</h3>
+                        <p>Механічна, ультразвукова</p>
+                        <div class="service-price">від 450 грн</div>
+                        <a href="/booking.html" class="service-btn">Забронювати</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h2>100+</h2>
+                    <p>Послуг</p>
+                </div>
+                <div class="stat-item">
+                    <h2>10+</h2>
+                    <p>Провайдерів</p>
+                </div>
+                <div class="stat-item">
+                    <h2>1000+</h2>
+                    <p>Задоволених клієнтів</p>
+                </div>
+                <div class="stat-item">
+                    <h2>24/7</h2>
+                    <p>Онлайн бронювання</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Glamour Beauty. Всі права захищені.</p>
+        <p>Агрегатор послуг краси для салонів та майстрів</p>
+        <p style="margin-top: 10px;">
+            <a href="/admin-login.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px;">
+                🔐 Вхід для адміністраторів
+            </a>
+        </p>
+    </footer>
+</body>
+</html>
